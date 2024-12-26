@@ -8,6 +8,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5367006899838144473, guid: 972b75a015277454b969167c498757cb,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163468446868215948, guid: 972b75a015277454b969167c498757cb,
+        type: 3}
+      propertyPath: baseCounter
+      value: 
+      objectReference: {fileID: 1790975243580583223}
     - target: {fileID: 3312382668685677917, guid: 972b75a015277454b969167c498757cb,
         type: 3}
       propertyPath: m_Name
@@ -68,6 +78,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4270564560010113678, guid: 972b75a015277454b969167c498757cb,
+        type: 3}
+      propertyPath: containerCounter
+      value: 
+      objectReference: {fileID: 1790975243580583223}
     - target: {fileID: 6505981517788552764, guid: 972b75a015277454b969167c498757cb,
         type: 3}
       propertyPath: m_Sprite
@@ -83,31 +98,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3312382668685677917, guid: 972b75a015277454b969167c498757cb,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4553087072358178990}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 972b75a015277454b969167c498757cb, type: 3}
---- !u!1 &5473841860773329070 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3312382668685677917, guid: 972b75a015277454b969167c498757cb,
+--- !u!114 &1790975243580583223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9141144139709448388, guid: 972b75a015277454b969167c498757cb,
     type: 3}
   m_PrefabInstance: {fileID: 7350169636578864627}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4553087072358178990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5473841860773329070}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 0db6202b23fd35c48a842e95c205e439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1

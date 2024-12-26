@@ -227,7 +227,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6469687145593214517, guid: ac964a67cdc32584aab07a6cd2fe1b21,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7592507850372782732}
+      addedObject: {fileID: -1219578551397204539}
   m_SourcePrefab: {fileID: 100100000, guid: ac964a67cdc32584aab07a6cd2fe1b21, type: 3}
 --- !u!1 &7333252385162279237 stripped
 GameObject:
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 7865281414882184778}
---- !u!114 &7592507850372782732
+--- !u!114 &-1219578551397204539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
