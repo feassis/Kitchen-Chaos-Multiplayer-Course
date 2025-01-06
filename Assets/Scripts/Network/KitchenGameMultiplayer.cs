@@ -34,15 +34,15 @@ public class KitchenGameMultiplayer : NetworkBehaviour
 
     public  void SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent)
     {
-        SpawnKitchenObjectServerRpc(GetKitchenObject(kitchenObjectSO), kitchenObjectParent.GetNetWorkObject());
+        SpawnKitchenObjectServerRpc(GetKitchenObjectIndex(kitchenObjectSO), kitchenObjectParent.GetNetWorkObject());
     }
 
-    private int GetKitchenObject(KitchenObjectSO kitchenObjectSO)
+    public int GetKitchenObjectIndex(KitchenObjectSO kitchenObjectSO)
     {
         return kitchenObjectList.kitchenObjectSOList.IndexOf(kitchenObjectSO);
     }
 
-    private KitchenObjectSO GetKitchenObjectSO(int index)
+    public KitchenObjectSO GetKitchenObjectSO(int index)
     {
         return kitchenObjectList.kitchenObjectSOList[index];
     }
