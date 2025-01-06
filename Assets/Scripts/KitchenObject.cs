@@ -22,36 +22,22 @@ public class KitchenObject : NetworkBehaviour {
         followTransform = GetComponent<FollowTransform>();
     }
 
-    
-    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent) {
-        if (this.kitchenObjectParent != null) {
-            this.kitchenObjectParent.ClearKitchenObject();
-        }
-
-        this.kitchenObjectParent = kitchenObjectParent;
-
-        if (kitchenObjectParent.HasKitchenObject()) {
-            Debug.LogError("IKitchenObjectParent already has a KitchenObject!");
-        }
-
-        kitchenObjectParent.SetKitchenObject(this);
-
-        followTransform.SetTargetTransform(kitchenObjectParent.GetKitchenObjectFollowTransform());
+    public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent)
+    {
+        SetKitchenObjectParentServerRpc(kitchenObjectParent.GetNetWorkObject());
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void SetKitchenObjectParentServerRpc(NetworkObjectReference kitchenNetworkObject)
+    private void SetKitchenObjectParentServerRpc(NetworkObjectReference kitchenObjectParentNetworkObjectReference)
     {
-        SetKitchenObjectParentClientRpc(kitchenNetworkObject);
+        SetKitchenObjectParentClientRpc(kitchenObjectParentNetworkObjectReference);
     }
 
-
-    [ClientRpc ]
-    private void SetKitchenObjectParentClientRpc(NetworkObjectReference kitchenNetworkObject)
+    [ClientRpc]
+    private void SetKitchenObjectParentClientRpc(NetworkObjectReference kitchenObjectParentNetworkObjectReference)
     {
-        kitchenNetworkObject.TryGet(out NetworkObject kichenParaentNetworkObject);
-
-        IKitchenObjectParent kitchenObjectParent= kichenParaentNetworkObject.GetComponent<IKitchenObjectParent>();
+        kitchenObjectParentNetworkObjectReference.TryGet(out NetworkObject kitchenObjectParentNetworkObject);
+        IKitchenObjectParent kitchenObjectParent = kitchenObjectParentNetworkObject.GetComponent<IKitchenObjectParent>();
 
         if (this.kitchenObjectParent != null)
         {

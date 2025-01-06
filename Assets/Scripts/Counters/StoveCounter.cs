@@ -62,8 +62,8 @@ public class StoveCounter : BaseCounter, IHasProgress {
 
         OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
         {
-            progressNormalized = fryingTimer.Value / burningTimerMax
-        }); throw new NotImplementedException();
+            progressNormalized = burningTimer.Value / burningTimerMax
+        }); 
     }
 
     private void FryingTimer_OnValueChanged(float previousValue, float newValue)
@@ -102,10 +102,6 @@ public class StoveCounter : BaseCounter, IHasProgress {
                     break;
                 case State.Fried:
                     burningTimer.Value += Time.deltaTime;
-
-                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs {
-                        progressNormalized = burningTimer.Value / burningRecipeSO.burningTimerMax
-                    });
 
                     if (burningTimer.Value > burningRecipeSO.burningTimerMax) {
                         // Fried
