@@ -67,7 +67,10 @@ public class KitchenGameManager : NetworkBehaviour {
         autoTestGamePausedState = true;
     }
 
-
+    public bool IsWaitingToStart()
+    {
+        return state.Value == State.WaitingToStart;
+    }
 
     private void IsGamePaused_OnValueChanged(bool previousValue, bool newValue)
     {
