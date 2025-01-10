@@ -25,12 +25,8 @@ public class CharacterSelectReady : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void SetPlayerReadyServerRpc(ServerRpcParams serverRpcParams = default)
     {
-        Debug.Log("Reached here:???");
-
         SetPlayerReadyClientRpc(serverRpcParams.Receive.SenderClientId);
         playerReadyDictionary[serverRpcParams.Receive.SenderClientId] = true;
-
-        Debug.Log("Reached here");
 
         bool allClientsReady = true;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)

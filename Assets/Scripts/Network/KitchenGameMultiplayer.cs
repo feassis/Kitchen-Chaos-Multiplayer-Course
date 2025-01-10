@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using static Loader;
+using UnityEngine.SceneManagement;
+ using Scene = Loader.Scene;
 
 public class KitchenGameMultiplayer : NetworkBehaviour
 {
     public static KitchenGameMultiplayer Instance { get; private set; }
 
     [SerializeField] private KitchenObjectListSO kitchenObjectList;
+
+    private const int MAX_PLAYERS = 4;
+
+    public event EventHandler OnTryingToJoinGame;
+    public event EventHandler OnFailToJoinGame;
 
     private void Awake()
     {
@@ -42,15 +48,36 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     private void NetworkManager_ConectionApprovalCallBack(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
         Debug.Log("Connection Approval Requested");
+
+        if(SceneManager.GetActiveScene().name != Loader.Scene.CharacterSelectionScene.ToString())
+        {
+            response.Approved = false;
+            response.Reason = "Game already in progress";
+            return;
+        }
+
+        if(NetworkManager.Singleton.ConnectedClientsIds.Count >= MAX_PLAYERS)
+        {
+            response.Approved = false;
+            response.Reason = "Game is full";
+            return;
+        }
+
         response.Approved = true;
     }
 
     public void StartClient()
     {
+        OnTryingToJoinGame?.Invoke(this, EventArgs.Empty);
+        NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
         NetworkManager.Singleton.StartClient();
     }
 
-    
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientID)
+    {
+        OnFailToJoinGame?.Invoke(this, EventArgs.Empty);
+    }
+
     [ServerRpc(RequireOwnership = false)]
     private void SpawnKitchenObjectServerRpc(int kitchenObjectIndex, NetworkObjectReference kitchenNetworkObject)
     {

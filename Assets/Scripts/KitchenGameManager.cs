@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KitchenGameManager : NetworkBehaviour {
 
 
     public static KitchenGameManager Instance { get; private set; }
 
+    [SerializeField] private Transform playerPrefab;
 
 
     public event EventHandler OnStateChanged;
@@ -59,6 +61,17 @@ public class KitchenGameManager : NetworkBehaviour {
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += NewworkManager_OnClientDisconnectCallback;
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+    }
+
+    private void SceneManager_OnLoadEventCompleted(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        foreach(ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            Transform playerTransform = Instantiate(playerPrefab);
+
+            playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
         }
     }
 

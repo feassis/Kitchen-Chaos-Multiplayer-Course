@@ -7,10 +7,13 @@ public class PauseMultiplayerUI : MonoBehaviour
 {
     private void Awake()
     {
+        Hide();
+    }
+
+    private void Start()
+    {
         KitchenGameManager.Instance.OnMultiplayerGamePaused += KitchenGameManager_OnMultiplayerGamePaused;
         KitchenGameManager.Instance.OnMultiplayerGameUnpaused += KitchenGameManager_OnMultiplayerGameUnpaused;
-
-        Hide();
     }
 
     private void KitchenGameManager_OnMultiplayerGameUnpaused(object sender, EventArgs e)
