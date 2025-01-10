@@ -30,7 +30,7 @@ public static class Loader {
     {
         Loader.targetScene = targetScene;
 
-        NetworkManager.Singleton.SceneManager.LoadScene(Scene.LoadingScene.ToString(), LoadSceneMode.Single);
+        NetworkManager.Singleton.SceneManager.LoadScene(targetScene.ToString(), LoadSceneMode.Single);
     }
 
     public static void LoaderCallback() {

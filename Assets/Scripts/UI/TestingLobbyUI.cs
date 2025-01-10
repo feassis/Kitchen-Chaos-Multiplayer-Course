@@ -22,7 +22,6 @@ public class TestingLobbyUI : MonoBehaviour
 
     private void OnCreateGameButtonClicked()
     {
-        KitchenGameMultiplayer.Instance.StartHost();
-        Loader.LoadNetwork(Loader.Scene.CharacterSelectionScene);
+        KitchenGameMultiplayer.Instance.StartHostAndLoadScene(Loader.Scene.CharacterSelectionScene);
     }
 }

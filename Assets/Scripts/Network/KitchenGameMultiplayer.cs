@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using static Loader;
 
 public class KitchenGameMultiplayer : NetworkBehaviour
 {
@@ -20,11 +21,27 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public void StartHost()
     {
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConectionApprovalCallBack;
+        Debug.Log("Starting Host");
         NetworkManager.Singleton.StartHost();
+    }
+
+    public void StartHostAndLoadScene(Scene desiredScene)
+    {
+        NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConectionApprovalCallBack;
+        StartCoroutine(StartHostAfterASingleFrameAndLoadScene(desiredScene));
+    }
+
+    private IEnumerator StartHostAfterASingleFrameAndLoadScene(Scene scene)
+    {
+        yield return null;
+        NetworkManager.Singleton.StartHost();
+        yield return null;
+        Loader.LoadNetwork(scene);
     }
 
     private void NetworkManager_ConectionApprovalCallBack(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
     {
+        Debug.Log("Connection Approval Requested");
         response.Approved = true;
     }
 
