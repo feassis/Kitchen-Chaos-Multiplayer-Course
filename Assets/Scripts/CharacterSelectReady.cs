@@ -8,6 +8,7 @@ public class CharacterSelectReady : NetworkBehaviour
 {
     public static CharacterSelectReady Instance { get; private set; }
     private Dictionary<ulong, bool> playerReadyDictionary;
+    public event EventHandler OnPlayerReadyChanged;
 
     private void Awake()
     {
@@ -50,5 +51,12 @@ public class CharacterSelectReady : NetworkBehaviour
     private void SetPlayerReadyClientRpc(ulong clientId)
     {
         playerReadyDictionary[clientId] = true;
+
+        OnPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    internal bool IsPlayerReady(ulong playerId)
+    {
+        return  playerReadyDictionary.ContainsKey(playerId) && playerReadyDictionary[playerId];
     }
 }

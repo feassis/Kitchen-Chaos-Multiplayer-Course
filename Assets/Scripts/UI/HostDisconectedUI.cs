@@ -19,6 +19,11 @@ public class HostDisconectedUI : MonoBehaviour
         });
     }
 
+    private void OnDestroy()
+    {
+        NetworkManager.Singleton.OnClientDisconnectCallback -= NetworkManager_OnClientDisconnectCallback;
+    }
+
     private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
         if(clientId == NetworkManager.ServerClientId)
