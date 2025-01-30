@@ -1383,7 +1383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &920941985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2197,9 +2197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 997c5a0db46954a4d8e35d7c74b9dfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuButton: {fileID: 0}
-  createLobbyButton: {fileID: 0}
-  quickJoinButton: {fileID: 0}
+  mainMenuButton: {fileID: 764507484}
+  createLobbyButton: {fileID: 1233100886}
+  quickJoinButton: {fileID: 329513863}
 --- !u!1 &1504901088
 GameObject:
   m_ObjectHideFlags: 0

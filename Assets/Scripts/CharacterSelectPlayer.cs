@@ -14,8 +14,6 @@ public class CharacterSelectPlayer : MonoBehaviour
 
     private void Awake()
     {
-        Hide();
-
         kickButton.onClick.AddListener(() =>
         {
             PlayerData playerData = KitchenGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(playerIndex);
@@ -29,6 +27,7 @@ public class CharacterSelectPlayer : MonoBehaviour
         CharacterSelectReady.Instance.OnPlayerReadyChanged += CharacterSelectReady_OnPlayerReadyChanged;
 
         kickButton.gameObject.SetActive(NetworkManager.Singleton.IsServer);
+        Hide();
         UpdatePlayer();
     }
 

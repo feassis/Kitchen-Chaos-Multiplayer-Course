@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
  using Scene = Loader.Scene;
@@ -69,6 +68,8 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     public void StartHostAndLoadScene(Scene desiredScene)
     {
         NetworkManager.Singleton.ConnectionApprovalCallback += NetworkManager_ConectionApprovalCallBack;
+        NetworkManager.Singleton.OnClientConnectedCallback += NetworkManager_OnClientConnectedCallback;
+        NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_Server_OnClientDisconnectCallback;
         StartCoroutine(StartHostAfterASingleFrameAndLoadScene(desiredScene));
     }
 

@@ -953,7 +953,6 @@ GameObject:
   m_Component:
   - component: {fileID: 653860451}
   - component: {fileID: 653860453}
-  - component: {fileID: 653860452}
   m_Layer: 5
   m_Name: CharacterSelectColorUI
   m_TagString: Untagged
@@ -993,21 +992,6 @@ RectTransform:
   m_AnchoredPosition: {x: -690, y: -418}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &653860452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 653860450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce1e88042106b054fb4c14b578db7cb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorId: 0
-  image: {fileID: 0}
-  selectedGameObject: {fileID: 0}
 --- !u!114 &653860453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3867,8 +3851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9512582a459f8e44686c4cc6e11e10a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuButton: {fileID: 0}
-  readyButton: {fileID: 0}
+  mainMenuButton: {fileID: 1659584398}
+  readyButton: {fileID: 1407536490}
 --- !u!1 &1740891311
 GameObject:
   m_ObjectHideFlags: 0
