@@ -34,6 +34,11 @@ public class LobbyUI : MonoBehaviour
         UpdateLobbyList(new List<Unity.Services.Lobbies.Models.Lobby>());
     }
 
+    private void OnDestroy()
+    {
+        KitchenGameLobby.Instance.OnLobbyListChanged -= OnLobbyListChanged;
+    }
+
     private void OnLobbyListChanged(object sender, KitchenGameLobby.OnLobbyListChangedEventArgs e)
     {
         UpdateLobbyList(e.Lobbies);
